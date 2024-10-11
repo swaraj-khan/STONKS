@@ -12,6 +12,12 @@ This project is a simple demonstration of a real-time trading simulation using S
 - Identification of swing highs and swing lows
 - Interactive start and stop buttons for simulation
 
+
+## Graph Trends for HLC
+
+![image](https://github.com/user-attachments/assets/f1732bcd-ef4e-4c4c-b0b0-c30f69b4a1d6)
+
+
 ## Demo
 
 
