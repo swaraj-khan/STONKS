@@ -71,15 +71,17 @@ while True:
         chart.line_chart(df.set_index(df.index)['Close'])
 
         st.write("### Recent Ticks")
-        st.write(df[['Tick Number', 'Close']].tail(10))  
+        st.write(df[['Tick Number', 'Close']].tail(5))  
 
         if swing_highs:
             last_swing_high = swing_highs[-1][4]
-            st.write(f"Swing High: {last_swing_high} at {swing_highs[-1][0]}")
-            
+            last_high_price = swing_highs[-1][3]
+            st.write(f"**Recent Swing High**: 📈 **{last_swing_high}** (Last at **{last_high_price}**)")
+
         if swing_lows:
             last_swing_low = swing_lows[-1][4]
-            st.write(f"Swing Low: {last_swing_low} at {swing_lows[-1][0]}")
+            last_low_price = swing_lows[-1][3]
+            st.write(f"**Recent Swing Low**: 📉 **{last_swing_low}** (Last at **{last_low_price}**)")
 
         if highest_peak is not None and lowest_depth is not None:
             st.markdown(f"**Highest Peak:** <span style='color:green;'>{highest_peak}</span>", unsafe_allow_html=True)
