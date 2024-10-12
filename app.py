@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 import streamlit as st
 import time
 from threading import Thread
@@ -16,7 +15,7 @@ swing_lows = []
 highest_peak = None
 lowest_depth = None
 simulation_running = False
-current_index = 0  # Initialize a current index
+current_index = 0
 
 def simulate_ticks():
     global tick_data, simulation_running, current_index
@@ -66,8 +65,13 @@ while True:
         calculate_swing_points()
         
         df = pd.DataFrame(tick_data, columns=['Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume'])
+        df['Tick Number'] = list(range(1, len(df) + 1))  
+        df.index = data.index[:len(df)]  
         
         chart.line_chart(df.set_index(df.index)['Close'])
+
+        st.write("### Recent Ticks")
+        st.write(df[['Tick Number', 'Close']].tail(10))  
 
         if swing_highs:
             last_swing_high = swing_highs[-1][4]
